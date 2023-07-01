@@ -1,12 +1,12 @@
-# Checkmk extension for ...
+# Checkmk extension for F-Secure
 
-![build](https://github.com/jiuka/checkmk_template/workflows/build/badge.svg)
-![flake8](https://github.com/jiuka/checkmk_template/workflows/Lint/badge.svg)
-![pytest](https://github.com/jiuka/checkmk_template/workflows/pytest/badge.svg)
+![build](https://github.com/scsitteam/checkmk_fsecure/workflows/build/badge.svg)
+![flake8](https://github.com/scsitteam/checkmk_fsecure/workflows/Lint/badge.svg)
+![pytest](https://github.com/scsitteam/checkmk_fsecure/workflows/pytest/badge.svg)
 
 ## Description
 
-This is a template to develop Checkmk Extensions
+Checkmk extension to check the status of F-Secure on windows
 
 ## Development
 
@@ -17,7 +17,7 @@ For the best development experience use [VSCode](https://code.visualstudio.com/)
 The following directories in this repo are getting mapped into the Checkmk site.
 
 * `agents`, `checkman`, `checks`, `doc`, `inventory`, `notifications`, `pnp-templates`, `web` are mapped into `local/share/check_mk/`
-* `agent_based` is mapped to `local/lib/check_mk/base/plugins/agent_based`
+* `agent_based` is mapped to `local/lib/python3/cmk/base/plugins/agent_based`
 * `nagios_plugins` is mapped to `local/lib/nagios/plugins`
 
 ## Continuous integration
