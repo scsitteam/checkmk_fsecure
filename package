@@ -1,22 +1,26 @@
 {
-    'author': u'',
-    'description': u'',
-    'download_url': '',
+    'author': u'IT Team - Supercomputing Systems AG ',
+    'description': u'Check F-Secure status under Windows',
+    'download_url': 'https://github.com/scsitteam/checkmk_fsecure',
     'files': {
-        'agent_based': [],
-        'agents': [],
-        'checkman': [],
-        'checks': [],
-        'doc': [],
-        'inventory': [],
-        'notifications': [],
-        'pnp-templates': [],
-        'web': []
+        'agent_based': [
+            'fsecure_status.py'
+        ],
+        'agents': [
+            'windows/plugins/fsecure_status.ps1',
+        ],
+        'lib': [
+            'python3/cmk/base/cee/plugins/bakery/fsecure_status.py',
+        ],
+        'web': [
+            'plugins/wato/agent_bakery_fsecure_status.py',
+            'plugins/wato/check_parameters_fsecure_status.py',
+        ]
     },
-    'name': '',
-    'title': u'',
-    'version': '0.0.1',
-    'version.min_required': '2.0.0',
+    'name': 'fsecure_status',
+    'title': u'F-Secure Status Check',
+    'version': '1.0.0',
+    'version.min_required': '2.2.0',
     'version.packaged': '2.2.0',
     'version.usable_until': '2.3.0',
 }
