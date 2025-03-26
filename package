@@ -3,24 +3,23 @@
     'description': u'Check F-Secure status under Windows',
     'download_url': 'https://github.com/scsitteam/checkmk_fsecure',
     'files': {
-        'agent_based': [
-            'fsecure_status.py'
-        ],
         'agents': [
             'windows/plugins/fsecure_status.ps1',
+        ],
+        'cmk_addons_plugins': [
+            'fsecure_status/agent_based/fsecure_status.py',
+            'fsecure_status/graphing/fsecure_status.py',
+            'fsecure_status/rulesets/agent_config.py',
+            'fsecure_status/rulesets/check_parameters.py',
         ],
         'lib': [
             'python3/cmk/base/cee/plugins/bakery/fsecure_status.py',
         ],
-        'web': [
-            'plugins/wato/agent_bakery_fsecure_status.py',
-            'plugins/wato/check_parameters_fsecure_status.py',
-        ]
     },
     'name': 'fsecure_status',
     'title': u'F-Secure Status Check',
-    'version': '1.0.0',
-    'version.min_required': '2.2.0',
-    'version.packaged': '2.2.0',
-    'version.usable_until': '2.3.0',
+    'version': '2.3.0',
+    'version.min_required': '2.3.0',
+    'version.packaged': '2.3.0',
+    'version.usable_until': '2.4.0',
 }

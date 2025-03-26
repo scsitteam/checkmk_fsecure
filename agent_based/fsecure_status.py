@@ -3,7 +3,7 @@
 #
 # fsecure_status - F-Secure Status Check with WMI
 #
-# Copyright (C) 2023  Marius Rieder <marius.rieder@scs.ch>
+# Copyright (C) 2023-2025  Marius Rieder <marius.rieder@scs.ch>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -26,13 +26,14 @@
 # LastConnectionTimeInHoursAgo: 0
 # AvDefinitionsAgeInHours: 44
 
-from cmk.base.plugins.agent_based.agent_based_api.v1 import (
-    register,
-    Service,
-    Result,
-    State,
+from cmk.agent_based.v2 import (
+    AgentSection,
     check_levels,
+    CheckPlugin,
     render,
+    Result,
+    Service,
+    State,
 )
 
 
@@ -52,15 +53,15 @@ def parse_fsecure_status(string_table):
     return parsed
 
 
-register.agent_section(
+agent_section_fsecure_status = AgentSection(
     name='fsecure_status',
     parse_function=parse_fsecure_status,
 )
 
 
 FSECURE_STATUS_CHECK_DEFAULT_PARAMETERS = {
-    'last_connection': (12 * 60 * 60, 24 * 60 * 60),
-    'avdef_age': (24 * 60 * 60, 48 * 60 * 60)
+    'last_connection': ('fixed', (12 * 60 * 60, 24 * 60 * 60)),
+    'avdef_age': ('fixed', (24 * 60 * 60, 48 * 60 * 60)),
 }
 
 
@@ -102,11 +103,11 @@ def check_fsecure_status(params, section):
     )
 
 
-register.check_plugin(
-    name = 'fsecure_status',
-    service_name = 'F-Secure Status',
-    discovery_function = discovery_fsecure_status,
-    check_function = check_fsecure_status,
-    check_default_parameters = FSECURE_STATUS_CHECK_DEFAULT_PARAMETERS,
-    check_ruleset_name = 'fsecure_status',
+check_plugin_fsecure_status = CheckPlugin(
+    name='fsecure_status',
+    service_name = 'WithSecure Status',
+    discovery_function=discovery_fsecure_status,
+    check_function=check_fsecure_status,
+    check_ruleset_name='fsecure_status',
+    check_default_parameters=FSECURE_STATUS_CHECK_DEFAULT_PARAMETERS,
 )

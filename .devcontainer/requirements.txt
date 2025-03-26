@@ -3,4 +3,3 @@ pytest
 pytest-md
 pytest-cov
 pytest-emoji
-requests-mock
