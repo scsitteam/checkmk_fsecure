@@ -20,7 +20,8 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 import pytest
-from cmk.base.plugins.agent_based.agent_based_api.v1 import (
+
+from cmk.agent_based.v2 import (
     Metric,
     Result,
     Service,
@@ -51,7 +52,7 @@ EXAMPLE_SECTION = {
         EXAMPLE_SECTION
     ),
 ])
-def notest_parse_fsecure_status(string_table, result):
+def test_parse_fsecure_status(string_table, result):
     assert fsecure_status.parse_fsecure_status(string_table) == result
 
 
@@ -59,7 +60,7 @@ def notest_parse_fsecure_status(string_table, result):
     ({}, []),
     (EXAMPLE_SECTION, [Service()]),
 ])
-def notest_discovery_fsecure_status(section, result):
+def test_discovery_fsecure_status(section, result):
     assert list(fsecure_status.discovery_fsecure_status(section)) == result
 
 
@@ -101,5 +102,5 @@ def notest_discovery_fsecure_status(section, result):
         ]
     ),
 ])
-def notest_check_fsecure_status(params, result):
+def test_check_fsecure_status(params, result):
     assert list(fsecure_status.check_fsecure_status(params, EXAMPLE_SECTION)) == result
