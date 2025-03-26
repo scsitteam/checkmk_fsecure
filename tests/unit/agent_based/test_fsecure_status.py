@@ -20,7 +20,8 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 import pytest
-from cmk.base.plugins.agent_based.agent_based_api.v1 import (
+
+from cmk.agent_based.v2 import (
     Metric,
     Result,
     Service,
@@ -77,7 +78,7 @@ def test_discovery_fsecure_status(section, result):
         ]
     ),
     (
-        {'last_connection': (2 * 60 * 60, 24 * 60 * 60), 'avdef_age': (5 * 60 * 60, 48 * 60 * 60)},
+        {'last_connection': ('fixed', (2 * 60 * 60, 24 * 60 * 60)), 'avdef_age': ('fixed', (5 * 60 * 60, 48 * 60 * 60))},
         [
             Result(state=State.CRIT, summary='RealTimeScanning not enabled'),
             Result(state=State.CRIT, summary='DeepGuard not enabled'),
@@ -89,7 +90,7 @@ def test_discovery_fsecure_status(section, result):
         ]
     ),
     (
-        {'last_connection': (2 * 60 * 60, 4 * 60 * 60), 'avdef_age': (5 * 60 * 60, 10 * 60 * 60)},
+        {'last_connection': ('fixed', (2 * 60 * 60, 4 * 60 * 60)), 'avdef_age': ('fixed', (5 * 60 * 60, 10 * 60 * 60))},
         [
             Result(state=State.CRIT, summary='RealTimeScanning not enabled'),
             Result(state=State.CRIT, summary='DeepGuard not enabled'),
