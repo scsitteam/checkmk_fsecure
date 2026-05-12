@@ -27,7 +27,7 @@ from cmk.agent_based.v2 import (
     Service,
     State,
 )
-from cmk.base.plugins.agent_based import fsecure_status
+from cmk_addons.plugins.fsecure_status.agent_based import fsecure_status
 
 EXAMPLE_STRING_TABLE = [
     ['RealTimeScanningEnabled', 'False'],
